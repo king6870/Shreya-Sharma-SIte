@@ -1,18 +1,18 @@
 :root {
-  --sapphire-950: #062a59;
-  --sapphire-900: #093c84;
-  --sapphire-700: #1a5fb4;
-  --sapphire-500: #2554c7;
-  --sapphire-100: #dcecff;
-  --yellow-100: #fff9de;
-  --yellow-200: #fff1b8;
-  --yellow-300: #ffe78a;
-  --yellow-400: #ffd85a;
+  --sapphire-950: #082f6f;
+  --sapphire-900: #0b418f;
+  --sapphire-700: #1b63cc;
+  --sapphire-500: #0f52ba;
+  --sapphire-100: #d7e7ff;
+  --yellow-100: #fbf4c2;
+  --yellow-200: #f2dc6b;
+  --yellow-300: #f7e69a;
+  --yellow-400: #e3ca4d;
   --ink-900: #0f1930;
   --ink-700: #2b3f62;
   --paper: #f3f7ff;
   --card: #ffffff;
-  --ring: #ffde6f;
+  --ring: #f2dc6b;
   --shadow: 0 14px 40px rgba(6, 42, 89, 0.12);
   --radius: 16px;
   --maxw: 1100px;
@@ -31,7 +31,7 @@ body {
   font-family: Georgia, "Times New Roman", serif;
   color: var(--ink-900);
   background:
-    radial-gradient(circle at 80% 8%, color-mix(in srgb, var(--yellow-200) 48%, #ffffff 52%), transparent 28%),
+    radial-gradient(circle at 80% 8%, color-mix(in srgb, var(--yellow-200) 55%, #ffffff 45%), transparent 28%),
     radial-gradient(circle at 14% -8%, color-mix(in srgb, var(--sapphire-500) 14%, #ffffff 86%), transparent 35%),
     radial-gradient(circle at 102% 16%, color-mix(in srgb, var(--sapphire-100) 55%, #ffffff 45%), transparent 46%),
     var(--paper);
@@ -155,7 +155,7 @@ body {
 }
 
 .eyebrow {
-  color: var(--yellow-200);
+  color: color-mix(in srgb, var(--yellow-200) 92%, #ffffff 8%);
   text-transform: uppercase;
   letter-spacing: 1.2px;
   font-size: 0.78rem;
@@ -198,15 +198,31 @@ h2 {
   color: color-mix(in srgb, #ffffff 86%, var(--yellow-200) 14%);
 }
 
+.hero .eyebrow {
+  animation: text-slide-in 580ms ease both;
+}
+
+.hero h1 {
+  animation: text-slide-in 700ms ease both 110ms;
+}
+
+.hero .lede {
+  animation: text-slide-in 760ms ease both 200ms;
+}
+
+.hero .hero-note {
+  animation: text-slide-in 760ms ease both 300ms;
+}
+
 .subhead {
   color: var(--ink-700);
   margin-top: -0.1rem;
 }
 
 .impact-strip {
-  background: linear-gradient(180deg, #0d3f88 0%, #174ea3 100%);
-  border-top: 1px solid #285fbb;
-  border-bottom: 1px solid #285fbb;
+  background: linear-gradient(180deg, #0c469d 0%, #0f52ba 100%);
+  border-top: 1px solid #2b67cc;
+  border-bottom: 1px solid #2b67cc;
 }
 
 .impact-strip h2 {
@@ -221,8 +237,8 @@ h2 {
 }
 
 .impact-card {
-  background: color-mix(in srgb, #ffffff 88%, var(--sapphire-100) 12%);
-  border: 1px solid #8fb0e8;
+  background: color-mix(in srgb, #ffffff 83%, var(--sapphire-100) 17%);
+  border: 1px solid #7ea5e8;
   box-shadow: inset 0 3px 0 var(--yellow-300), var(--shadow);
   border-radius: var(--radius);
   padding: 0.9rem;
@@ -267,7 +283,7 @@ h2 {
 }
 
 .feature-section {
-  background: linear-gradient(135deg, #e6f1ff 0%, #f8fbff 34%, #d8e9ff 100%);
+  background: linear-gradient(135deg, #dfedff 0%, #f7fbff 34%, #cfe3ff 100%);
 }
 
 .badge-list {
@@ -338,16 +354,17 @@ h2 {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  z-index: -2;
+  z-index: -1;
   overflow: hidden;
 }
 
 .geo {
   --base-rot: 0deg;
   position: absolute;
-  opacity: 0.18;
-  border: 2px solid color-mix(in srgb, var(--sapphire-500) 70%, #ffffff 30%);
-  animation: float-shape 11s ease-in-out infinite;
+  opacity: 0.4;
+  border: 3px solid color-mix(in srgb, var(--sapphire-500) 78%, #ffffff 22%);
+  box-shadow: 0 12px 24px rgba(8, 47, 111, 0.24);
+  animation: none;
 }
 
 .geo-diamond {
@@ -356,7 +373,8 @@ h2 {
   height: 84px;
   top: 24%;
   left: 5%;
-  background: color-mix(in srgb, var(--yellow-200) 40%, transparent 60%);
+  background: color-mix(in srgb, var(--yellow-200) 70%, transparent 30%);
+  transform: rotate(var(--base-rot));
 }
 
 .geo-circle {
@@ -365,7 +383,7 @@ h2 {
   top: 56%;
   right: 4%;
   border-radius: 50%;
-  animation-delay: 1.4s;
+  background: color-mix(in srgb, var(--sapphire-100) 45%, transparent 55%);
 }
 
 .geo-triangle {
@@ -376,10 +394,10 @@ h2 {
   left: 10%;
   border-left: 38px solid transparent;
   border-right: 38px solid transparent;
-  border-bottom: 66px solid color-mix(in srgb, var(--sapphire-700) 40%, transparent 60%);
+  border-bottom: 66px solid color-mix(in srgb, var(--sapphire-700) 70%, transparent 30%);
   border-top: 0;
   border-radius: 0;
-  animation-delay: 0.8s;
+  box-shadow: none;
 }
 
 .geo-square {
@@ -387,19 +405,17 @@ h2 {
   height: 68px;
   top: 12%;
   right: 18%;
-  background: color-mix(in srgb, var(--yellow-100) 65%, transparent 35%);
-  animation-delay: 2.2s;
+  background: color-mix(in srgb, var(--yellow-100) 72%, transparent 28%);
 }
 
-@keyframes float-shape {
+@keyframes text-slide-in {
   0% {
-    transform: translateY(0) rotate(var(--base-rot));
-  }
-  50% {
-    transform: translateY(-14px) rotate(calc(var(--base-rot) + 4deg));
+    opacity: 0;
+    transform: translateY(16px);
   }
   100% {
-    transform: translateY(0) rotate(var(--base-rot));
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -431,6 +447,29 @@ h2 {
 
 .delay-4 {
   transition-delay: 290ms;
+}
+
+.section h2 {
+  position: relative;
+  padding-bottom: 0.3rem;
+}
+
+.section h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 64px;
+  height: 3px;
+  border-radius: 999px;
+  background: var(--yellow-200);
+  transform: scaleX(0.35);
+  transform-origin: left;
+  transition: transform 420ms ease;
+}
+
+.js-enabled .section h2.reveal-up.in-view::after {
+  transform: scaleX(1);
 }
 
 .site-footer {
@@ -500,20 +539,23 @@ button:focus-visible {
   }
 
   .geo {
-    opacity: 0.12;
+    opacity: 0.3;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .geo {
-    animation: none;
-  }
-
   .reveal-up,
   .js-enabled .reveal-up,
   .js-enabled .reveal-up.in-view {
     opacity: 1;
     transform: none;
     transition: none;
+  }
+
+  .hero .eyebrow,
+  .hero h1,
+  .hero .lede,
+  .hero .hero-note {
+    animation: none;
   }
 }
