@@ -136,20 +136,16 @@ main > .impact-strip { position: relative; z-index: 1; }
   box-shadow: 0 12px 24px var(--geo-shadow, rgba(8, 47, 111, 0.22));
   background: linear-gradient(135deg, var(--geo-fill-start, color-mix(in srgb, var(--azure-100) 72%, #ffffff 28%)), var(--geo-fill-end, color-mix(in srgb, var(--yellow-100) 68%, #ffffff 32%)));
 }
-.geo-diamond { transform: rotate(45deg); }
-.geo-hexagon { clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%); }
 .geo-triangle {
   width: 0; height: 0; border: 0; background: transparent; box-shadow: none;
   border-left: 34px solid transparent; border-right: 34px solid transparent;
   border-bottom: 58px solid color-mix(in srgb, var(--yellow-200) 72%, var(--azure-100) 28%);
 }
-.geo-bar { border-radius: 999px; }
+.geo-rectangle,
 .geo-square { clip-path: none; }
 .geo-outline { background: transparent !important; }
-.geo-outline.geo-diamond,
 .geo-outline.geo-square,
-.geo-outline.geo-hexagon,
-.geo-outline.geo-bar {
+.geo-outline.geo-rectangle {
   border-color: var(--geo-border, color-mix(in srgb, var(--azure-700) 76%, #ffffff 24%));
   box-shadow: 0 0 0 1px rgba(255,255,255,0.55), 0 10px 18px rgba(8, 47, 111, 0.16);
 }
@@ -168,14 +164,11 @@ main > .impact-strip { position: relative; z-index: 1; }
 }
 .hero .geo-layer .geo,
 .impact-strip .geo-layer .geo { opacity: 0.68; }
-.hero .geo-layer .geo-outline.geo-diamond,
-.hero .geo-layer .geo-outline.geo-square,
-.hero .geo-layer .geo-outline.geo-hexagon,
-.hero .geo-layer .geo-outline.geo-bar,
-.impact-strip .geo-layer .geo-outline.geo-diamond,
 .impact-strip .geo-layer .geo-outline.geo-square,
-.impact-strip .geo-layer .geo-outline.geo-hexagon,
-.impact-strip .geo-layer .geo-outline.geo-bar {
+.hero .geo-layer .geo-outline.geo-rectangle,
+.hero .geo-layer .geo-outline.geo-triangle,
+.impact-strip .geo-layer .geo-outline.geo-rectangle,
+.impact-strip .geo-layer .geo-outline.geo-triangle {
   box-shadow: 0 0 0 1px rgba(255,255,255,0.35), 0 10px 18px rgba(13, 51, 118, 0.16);
 }
 .reveal-up, .slide-left, .slide-right, .zoom-in { transition: transform 620ms ease, opacity 620ms ease; }

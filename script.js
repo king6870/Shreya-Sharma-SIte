@@ -23,7 +23,7 @@ const buildGeoField = (layer, configs, options = {}) => {
     return;
   }
 
-  const shapeTypes = options.shapeTypes || ["diamond", "square", "hexagon"];
+  const shapeTypes = options.shapeTypes || ["square", "rectangle", "triangle"];
   const baseOpacity = options.baseOpacity ?? 0.52;
   const opacitySpread = options.opacitySpread ?? 0.3;
 
@@ -31,7 +31,7 @@ const buildGeoField = (layer, configs, options = {}) => {
     const element = document.createElement("span");
     element.className = `geo geo-${type}${outline ? " geo-outline" : ""} geo-tone-${tone}`;
 
-    const size = 12 + Math.round(rand() * 24);
+    const size = 28 + Math.round(rand() * 34);
     const opacity = baseOpacity + rand() * opacitySpread;
     const rotate = Math.round(rand() * 360);
 
@@ -39,21 +39,21 @@ const buildGeoField = (layer, configs, options = {}) => {
     element.style.transformOrigin = "center center";
     element.style.transform = `translate(-50%, -50%) rotate(${rotate}deg)`;
 
-    if (type === "diamond" || type === "square" || type === "hexagon") {
+    if (type === "square") {
       element.style.width = `${size}px`;
       element.style.height = `${size}px`;
     }
 
-    if (type === "bar") {
-      element.style.width = `${size + 28}px`;
-      element.style.height = `${8 + Math.round(rand() * 4)}px`;
+    if (type === "rectangle") {
+      element.style.width = `${size + 30}px`;
+      element.style.height = `${18 + Math.round(rand() * 10)}px`;
     }
 
     if (type === "triangle") {
-      const tri = 8 + Math.round(rand() * 14);
+      const tri = 14 + Math.round(rand() * 12);
       element.style.borderLeftWidth = `${tri}px`;
       element.style.borderRightWidth = `${tri}px`;
-      element.style.borderBottomWidth = `${tri + 8}px`;
+      element.style.borderBottomWidth = `${tri + 12}px`;
     }
 
     if (outline) {
@@ -79,33 +79,29 @@ const buildGeoField = (layer, configs, options = {}) => {
       shape.style.left = `${Math.max(0, Math.min(100, x))}%`;
       shape.style.top = `${Math.max(0, Math.min(100, y))}%`;
 
-      if (type === "bar") {
-        shape.style.transform = `translate(-50%, -50%) rotate(${Math.round(rand() * 180)}deg)`;
-      }
-
       layer.appendChild(shape);
     }
   });
 };
 
 buildGeoField(geoLayer, [
-  { xMin: 10, xMax: 24, yMin: 8, yMax: 92, count: 14, seed: 11 },
-  { xMin: 76, xMax: 90, yMin: 8, yMax: 92, count: 14, seed: 23 },
-  { xMin: 18, xMax: 82, yMin: 16, yMax: 26, count: 6, seed: 37 },
-  { xMin: 18, xMax: 82, yMin: 74, yMax: 84, count: 6, seed: 41 },
-], { tone: "blue", shapeTypes: ["diamond", "square", "hexagon"], baseOpacity: 0.44, opacitySpread: 0.18 });
+  { xMin: 5, xMax: 18, yMin: 6, yMax: 94, count: 6, seed: 11 },
+  { xMin: 82, xMax: 95, yMin: 6, yMax: 94, count: 6, seed: 23 },
+  { xMin: 16, xMax: 84, yMin: 6, yMax: 18, count: 4, seed: 37 },
+  { xMin: 16, xMax: 84, yMin: 82, yMax: 94, count: 4, seed: 41 },
+], { tone: "blue", shapeTypes: ["square", "rectangle", "triangle"], baseOpacity: 0.42, opacitySpread: 0.14 });
 
 buildGeoField(document.querySelector(".geo-layer-hero"), [
-  { xMin: 12, xMax: 24, yMin: 14, yMax: 88, count: 10, seed: 53 },
-  { xMin: 76, xMax: 88, yMin: 14, yMax: 88, count: 10, seed: 67 },
-  { xMin: 22, xMax: 78, yMin: 16, yMax: 28, count: 4, seed: 71 },
-], { tone: "yellow", shapeTypes: ["diamond", "square", "hexagon"], baseOpacity: 0.4, opacitySpread: 0.14 });
+  { xMin: 6, xMax: 18, yMin: 8, yMax: 92, count: 4, seed: 53 },
+  { xMin: 82, xMax: 94, yMin: 8, yMax: 92, count: 4, seed: 67 },
+  { xMin: 18, xMax: 82, yMin: 8, yMax: 20, count: 2, seed: 71 },
+], { tone: "yellow", shapeTypes: ["square", "rectangle", "triangle"], baseOpacity: 0.36, opacitySpread: 0.1 });
 
 buildGeoField(document.querySelector(".geo-layer-impact"), [
-  { xMin: 12, xMax: 24, yMin: 14, yMax: 88, count: 8, seed: 89 },
-  { xMin: 76, xMax: 88, yMin: 14, yMax: 88, count: 8, seed: 97 },
-  { xMin: 22, xMax: 78, yMin: 16, yMax: 28, count: 4, seed: 101 },
-], { tone: "yellow", shapeTypes: ["diamond", "square", "hexagon"], baseOpacity: 0.38, opacitySpread: 0.12 });
+  { xMin: 6, xMax: 18, yMin: 8, yMax: 92, count: 4, seed: 89 },
+  { xMin: 82, xMax: 94, yMin: 8, yMax: 92, count: 4, seed: 97 },
+  { xMin: 18, xMax: 82, yMin: 8, yMax: 20, count: 2, seed: 101 },
+], { tone: "yellow", shapeTypes: ["square", "rectangle", "triangle"], baseOpacity: 0.34, opacitySpread: 0.08 });
 
 const revealSections = ["#education", "#leadership", "#tennis", "#achievements", "#service", "#timeline", "#contact"];
 const motionTargets = revealSections.flatMap((selector) => {
