@@ -1,9 +1,9 @@
 :root {
-  --sapphire-950: #082f6f;
-  --sapphire-900: #0b418f;
-  --sapphire-700: #1b63cc;
-  --sapphire-500: #0f52ba;
-  --sapphire-100: #d7e7ff;
+  --azure-950: #082f6f;
+  --azure-900: #0b418f;
+  --azure-700: #1b63cc;
+  --azure-500: #0f52ba;
+  --azure-100: #d7e7ff;
   --yellow-100: #fbf4c2;
   --yellow-200: #f2dc6b;
   --yellow-300: #f7e69a;
@@ -13,7 +13,7 @@
   --paper: #f3f7ff;
   --card: #ffffff;
   --ring: #f2dc6b;
-  --shadow: 0 14px 40px rgba(6, 42, 89, 0.12);
+  --shadow: 0 14px 40px rgba(8, 47, 111, 0.16);
   --radius: 16px;
   --maxw: 1100px;
 }
@@ -30,12 +30,12 @@ body {
   margin: 0;
   font-family: Georgia, "Times New Roman", serif;
   color: var(--ink-900);
-  background:
-    radial-gradient(circle at 80% 8%, color-mix(in srgb, var(--yellow-200) 55%, #ffffff 45%), transparent 28%),
-    radial-gradient(circle at 14% -8%, color-mix(in srgb, var(--sapphire-500) 14%, #ffffff 86%), transparent 35%),
-    radial-gradient(circle at 102% 16%, color-mix(in srgb, var(--sapphire-100) 55%, #ffffff 45%), transparent 46%),
-    var(--paper);
   line-height: 1.6;
+  background:
+    radial-gradient(circle at 82% 10%, color-mix(in srgb, var(--yellow-200) 64%, #ffffff 36%), transparent 24%),
+    radial-gradient(circle at 18% 8%, color-mix(in srgb, var(--azure-100) 55%, #ffffff 45%), transparent 22%),
+    radial-gradient(circle at 86% 70%, color-mix(in srgb, var(--yellow-100) 58%, #ffffff 42%), transparent 26%),
+    linear-gradient(180deg, #eff6ff 0%, #f8fbff 100%);
 }
 
 .skip-link {
@@ -47,7 +47,7 @@ body {
 .skip-link:focus {
   left: 1rem;
   top: 1rem;
-  background: var(--yellow-300);
+  background: var(--yellow-200);
   color: #111;
   padding: 0.5rem 0.75rem;
   border-radius: 8px;
@@ -61,9 +61,9 @@ body {
 .site-header {
   position: relative;
   z-index: 20;
-  background: color-mix(in srgb, #ffffff 82%, var(--sapphire-100) 18%);
-  backdrop-filter: blur(6px);
+  background: linear-gradient(90deg, #ffffff 0%, color-mix(in srgb, var(--azure-100) 78%, #ffffff 22%) 100%);
   border-bottom: 1px solid #b8d0f5;
+  backdrop-filter: blur(6px);
 }
 
 .nav-shell {
@@ -75,7 +75,7 @@ body {
 }
 
 .brand {
-  color: var(--sapphire-950);
+  color: var(--azure-950);
   text-decoration: none;
   font-weight: 700;
   letter-spacing: 0.2px;
@@ -99,17 +99,17 @@ body {
 
 .site-nav a:hover,
 .site-nav a.is-active {
-  background: color-mix(in srgb, var(--sapphire-100) 64%, var(--yellow-100) 36%);
+  background: linear-gradient(135deg, color-mix(in srgb, var(--azure-100) 75%, #ffffff 25%), color-mix(in srgb, var(--yellow-100) 75%, #ffffff 25%));
   border-color: #9fbff0;
-  color: var(--sapphire-900);
+  color: var(--azure-900);
 }
 
 .menu-toggle {
   display: none;
   border: 1px solid #a8c3ee;
   border-radius: 10px;
-  background: color-mix(in srgb, #ffffff 78%, var(--sapphire-100) 22%);
-  color: var(--sapphire-950);
+  background: linear-gradient(135deg, #ffffff 0%, color-mix(in srgb, var(--azure-100) 70%, #ffffff 30%) 100%);
+  color: var(--azure-950);
   padding: 0.35rem 0.7rem;
   font: inherit;
 }
@@ -117,10 +117,12 @@ body {
 .section {
   padding: clamp(3rem, 6vw, 5rem) 0;
   scroll-margin-top: 20px;
+  position: relative;
+  z-index: 1;
 }
 
 .section-alt {
-  background: linear-gradient(125deg, #eaf3ff 0%, #f5f9d8 100%);
+  background: linear-gradient(135deg, #ebf4ff 0%, #f8f3cd 100%);
   border-top: 1px solid #cfe1ff;
   border-bottom: 1px solid #cfe1ff;
 }
@@ -130,6 +132,7 @@ body {
   overflow: hidden;
   isolation: isolate;
   padding-top: clamp(4rem, 8vw, 6.5rem);
+  background: linear-gradient(135deg, #0a4599 0%, #0f52ba 60%, #e8dc91 100%);
 }
 
 .hero::before {
@@ -138,9 +141,9 @@ body {
   inset: 0;
   z-index: -1;
   background:
-    radial-gradient(circle at 15% 20%, color-mix(in srgb, var(--sapphire-500) 32%, transparent 68%), transparent 42%),
-    radial-gradient(circle at 84% 78%, color-mix(in srgb, var(--yellow-200) 58%, transparent 42%), transparent 40%),
-    linear-gradient(132deg, var(--sapphire-950) 0%, var(--sapphire-900) 42%, var(--sapphire-500) 100%);
+    radial-gradient(circle at 14% 24%, color-mix(in srgb, var(--azure-500) 30%, transparent 70%), transparent 35%),
+    radial-gradient(circle at 84% 18%, color-mix(in srgb, var(--yellow-200) 52%, transparent 48%), transparent 30%),
+    linear-gradient(120deg, rgba(8, 47, 111, 0.2) 0%, rgba(15, 82, 186, 0.15) 55%, rgba(242, 220, 107, 0.18) 100%);
 }
 
 .hero-grid {
@@ -167,7 +170,7 @@ h2,
 h3 {
   line-height: 1.2;
   margin-top: 0;
-  color: var(--sapphire-950);
+  color: var(--azure-950);
 }
 
 h1 {
@@ -220,7 +223,7 @@ h2 {
 }
 
 .impact-strip {
-  background: linear-gradient(135deg, #0c469d 0%, #0f52ba 72%, #f2dc6b 100%);
+  background: linear-gradient(135deg, #0a4599 0%, #0f52ba 72%, #f2dc6b 100%);
   border-top: 1px solid #2b67cc;
   border-bottom: 1px solid #2b67cc;
 }
@@ -237,7 +240,7 @@ h2 {
 }
 
 .impact-card {
-  background: color-mix(in srgb, #ffffff 83%, var(--sapphire-100) 17%);
+  background: linear-gradient(135deg, color-mix(in srgb, #ffffff 84%, var(--azure-100) 16%), color-mix(in srgb, #ffffff 88%, var(--yellow-100) 12%));
   border: 1px solid #7ea5e8;
   box-shadow: inset 0 3px 0 var(--yellow-300), var(--shadow);
   border-radius: var(--radius);
@@ -247,7 +250,7 @@ h2 {
 .impact-card h3 {
   margin: 0;
   font-size: clamp(1.8rem, 1.35rem + 1vw, 2.4rem);
-  color: var(--sapphire-900);
+  color: var(--azure-900);
 }
 
 .impact-card p {
@@ -270,9 +273,9 @@ h2 {
 }
 
 .card {
-  background: var(--card);
+  background: linear-gradient(135deg, #ffffff 0%, color-mix(in srgb, var(--azure-100) 24%, #ffffff 76%) 100%);
   border: 1px solid #c2d8fb;
-  box-shadow: inset 0 3px 0 color-mix(in srgb, var(--sapphire-100) 76%, #ffffff 24%), var(--shadow);
+  box-shadow: inset 0 3px 0 color-mix(in srgb, var(--azure-100) 76%, #ffffff 24%), var(--shadow);
   border-radius: var(--radius);
   padding: 1rem;
 }
@@ -283,7 +286,7 @@ h2 {
 }
 
 .feature-section {
-  background: linear-gradient(130deg, #ddebff 0%, #eef6ff 52%, #f6efb8 100%);
+  background: linear-gradient(130deg, #dfebff 0%, #f8fbff 55%, #f6efb8 100%);
 }
 
 .badge-list {
@@ -295,7 +298,7 @@ h2 {
 .badge-list span {
   display: inline-flex;
   align-items: center;
-  background: color-mix(in srgb, #ffffff 55%, var(--sapphire-100) 45%);
+  background: linear-gradient(135deg, #ffffff 0%, color-mix(in srgb, var(--azure-100) 38%, #ffffff 62%) 100%);
   border: 1px solid #9fbff0;
   color: var(--ink-900);
   border-radius: 999px;
@@ -304,20 +307,14 @@ h2 {
 }
 
 .timeline-section {
-  background:
-    linear-gradient(145deg, #e7f2ff 0%, #eef6de 100%);
-}
-
-main {
-  position: relative;
-  overflow: hidden;
+  background: linear-gradient(145deg, #e7f2ff 0%, #eef6de 100%);
 }
 
 .timeline {
   list-style: none;
   margin: 1.25rem 0 0;
   padding: 0 0 0 1.25rem;
-  border-left: 3px solid var(--sapphire-500);
+  border-left: 3px solid var(--azure-500);
 }
 
 .timeline li {
@@ -333,14 +330,15 @@ main {
   top: 0.8rem;
   width: 0.78rem;
   height: 0.78rem;
-  border-radius: 50%;
-  background: var(--yellow-200);
-  border: 2px solid var(--sapphire-900);
+  border-radius: 0;
+  background: linear-gradient(135deg, var(--yellow-200), var(--yellow-100));
+  border: 2px solid var(--azure-900);
+  transform: rotate(45deg);
 }
 
 .timeline-year {
   display: inline-block;
-  background: var(--sapphire-900);
+  background: var(--azure-900);
   color: #fff;
   border-radius: 999px;
   padding: 0.2rem 0.65rem;
@@ -349,10 +347,15 @@ main {
 }
 
 .timeline-content {
-  background: #fff;
+  background: linear-gradient(135deg, #ffffff 0%, color-mix(in srgb, var(--yellow-100) 22%, #ffffff 78%) 100%);
   border: 1px solid #c2d8fb;
   border-radius: 12px;
   padding: 0.7rem 0.8rem;
+}
+
+main {
+  position: relative;
+  overflow: hidden;
 }
 
 .geo-layer {
@@ -370,138 +373,71 @@ main > .impact-strip {
 }
 
 .geo {
-  --base-rot: 0deg;
   position: absolute;
-  opacity: 0.55;
-  border: 3px solid color-mix(in srgb, var(--sapphire-500) 78%, #ffffff 22%);
-  box-shadow: 0 12px 24px rgba(8, 47, 111, 0.24);
-  animation: none;
+  opacity: 0.66;
+  border: 3px solid color-mix(in srgb, var(--azure-500) 80%, #ffffff 20%);
+  box-shadow: 0 12px 24px rgba(8, 47, 111, 0.22);
+  background: linear-gradient(135deg, color-mix(in srgb, var(--azure-100) 62%, #ffffff 38%), color-mix(in srgb, var(--yellow-100) 60%, #ffffff 40%));
 }
 
 .geo-diamond {
-  --base-rot: 45deg;
-  width: 84px;
-  height: 84px;
-  top: 13%;
-  left: 4%;
-  background: color-mix(in srgb, var(--yellow-200) 70%, transparent 30%);
-  transform: rotate(var(--base-rot));
-}
-
-.geo-circle {
-  width: 130px;
-  height: 130px;
-  top: 48%;
-  right: 3%;
-  border-radius: 50%;
-  background: color-mix(in srgb, var(--sapphire-100) 45%, transparent 55%);
-}
-
-.geo-triangle {
-  border: 0;
-  width: 0;
-  height: 0;
-  top: 66%;
-  left: 8%;
-  border-left: 38px solid transparent;
-  border-right: 38px solid transparent;
-  border-bottom: 66px solid color-mix(in srgb, var(--sapphire-700) 70%, transparent 30%);
-  border-top: 0;
-  border-radius: 0;
-  box-shadow: none;
-}
-
-.geo-square {
-  width: 68px;
-  height: 68px;
-  top: 17%;
-  right: 21%;
-  background: color-mix(in srgb, var(--yellow-100) 72%, transparent 28%);
-}
-
-.geo-ring {
-  width: 150px;
-  height: 150px;
-  top: 84%;
-  right: 7%;
-  border-radius: 50%;
-  border-width: 8px;
-  background: transparent;
+  transform: rotate(45deg);
 }
 
 .geo-hexagon {
-  width: 94px;
-  height: 56px;
-  top: 32%;
-  left: 78%;
-  background: color-mix(in srgb, var(--yellow-300) 65%, transparent 35%);
   clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
 }
 
+.geo-triangle {
+  width: 0;
+  height: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  border-left: 34px solid transparent;
+  border-right: 34px solid transparent;
+  border-bottom: 58px solid color-mix(in srgb, var(--yellow-200) 72%, var(--azure-100) 28%);
+}
+
 .geo-bar {
-  width: 210px;
-  height: 16px;
-  top: 78%;
-  left: 64%;
-  background: color-mix(in srgb, var(--sapphire-700) 78%, #ffffff 22%);
   border-radius: 999px;
 }
 
-.geo-dot {
-  width: 34px;
-  height: 34px;
-  top: 38%;
-  left: 14%;
-  border-radius: 50%;
-  background: color-mix(in srgb, var(--yellow-200) 86%, transparent 14%);
+.geo-square {
+  clip-path: none;
 }
 
-@keyframes text-slide-in {
-  0% {
-    opacity: 0;
-    transform: translateY(16px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.reveal-up {
-  transition: transform 560ms ease, opacity 560ms ease;
-}
-
+.reveal-up,
 .slide-left,
 .slide-right,
 .zoom-in {
   transition: transform 620ms ease, opacity 620ms ease;
 }
 
-.js-enabled .reveal-up {
+.js-enabled .reveal-up,
+.js-enabled .slide-left,
+.js-enabled .slide-right,
+.js-enabled .zoom-in {
   opacity: 0;
+}
+
+.js-enabled .reveal-up {
   transform: translateY(18px);
 }
 
 .js-enabled .slide-left {
-  opacity: 0;
-  transform: translateX(-22px);
+  transform: translateX(-24px);
 }
 
 .js-enabled .slide-right {
-  opacity: 0;
-  transform: translateX(22px);
+  transform: translateX(24px);
 }
 
 .js-enabled .zoom-in {
-  opacity: 0;
   transform: scale(0.96);
 }
 
-.js-enabled .reveal-up.in-view {
-  opacity: 1;
-  transform: translateY(0);
-}
-
+.js-enabled .reveal-up.in-view,
 .js-enabled .slide-left.in-view,
 .js-enabled .slide-right.in-view,
 .js-enabled .zoom-in.in-view {
@@ -509,21 +445,10 @@ main > .impact-strip {
   transform: none;
 }
 
-.delay-1 {
-  transition-delay: 80ms;
-}
-
-.delay-2 {
-  transition-delay: 150ms;
-}
-
-.delay-3 {
-  transition-delay: 220ms;
-}
-
-.delay-4 {
-  transition-delay: 290ms;
-}
+.delay-1 { transition-delay: 80ms; }
+.delay-2 { transition-delay: 150ms; }
+.delay-3 { transition-delay: 220ms; }
+.delay-4 { transition-delay: 290ms; }
 
 .section h2 {
   position: relative;
@@ -538,19 +463,19 @@ main > .impact-strip {
   width: 64px;
   height: 3px;
   border-radius: 999px;
-  background: var(--yellow-200);
+  background: linear-gradient(90deg, var(--yellow-200), var(--yellow-100));
   transform: scaleX(0.35);
   transform-origin: left;
   transition: transform 420ms ease;
 }
 
-.js-enabled .section h2.reveal-up.in-view::after {
+.js-enabled .section h2.in-view::after {
   transform: scaleX(1);
 }
 
 .site-footer {
   border-top: 1px solid #d8e8ff;
-  background: var(--sapphire-950);
+  background: linear-gradient(90deg, var(--azure-950), var(--azure-900));
   color: #f8fbff;
   padding: 1rem 0;
 }
@@ -591,7 +516,7 @@ button:focus-visible {
     padding: 0.75rem;
     border: 1px solid #adc8f0;
     border-radius: 12px;
-    background: #f5faff;
+    background: linear-gradient(135deg, #ffffff 0%, #f5faff 100%);
     box-shadow: var(--shadow);
     flex-direction: column;
     align-items: stretch;
@@ -606,21 +531,13 @@ button:focus-visible {
   }
 
   .two-up,
-  .three-up {
-    grid-template-columns: 1fr;
-  }
-
+  .three-up,
   .impact-grid {
     grid-template-columns: 1fr;
   }
 
   .geo {
-    opacity: 0.45;
-  }
-
-  .geo-ring,
-  .geo-bar {
-    display: none;
+    opacity: 0.58;
   }
 }
 
@@ -633,7 +550,10 @@ button:focus-visible {
   .js-enabled .slide-left,
   .js-enabled .slide-right,
   .js-enabled .zoom-in,
-  .js-enabled .reveal-up.in-view {
+  .js-enabled .reveal-up.in-view,
+  .js-enabled .slide-left.in-view,
+  .js-enabled .slide-right.in-view,
+  .js-enabled .zoom-in.in-view {
     opacity: 1;
     transform: none;
     transition: none;
@@ -644,5 +564,16 @@ button:focus-visible {
   .hero .lede,
   .hero .hero-note {
     animation: none;
+  }
+}
+
+@keyframes text-slide-in {
+  0% {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

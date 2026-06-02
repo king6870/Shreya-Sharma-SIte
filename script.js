@@ -4,30 +4,21 @@ const navLinks = Array.from(document.querySelectorAll(".site-nav a"));
 
 document.body.classList.add("js-enabled");
 
-const autoRevealSelectors = [
-  ".section h2",
-  ".card",
-  ".badge-list span",
-  ".timeline li",
-  ".impact-card",
-  ".subhead",
-  ".section p",
-];
+const motionTargets = Array.from(
+  document.querySelectorAll(
+    ".hero-copy > *, .section h2, .section p, .card, .badge-list span, .timeline li, .impact-card"
+  )
+);
 
-autoRevealSelectors.forEach((selector) => {
-  document.querySelectorAll(selector).forEach((el, index) => {
-    const variant = ["slide-left", "slide-right", "zoom-in", "reveal-up"][index % 4];
+motionTargets.forEach((element, index) => {
+  const variants = ["reveal-up", "slide-left", "slide-right", "zoom-in"];
+  const variant = variants[index % variants.length];
 
-    if (!el.classList.contains("reveal-up") && !el.classList.contains("slide-left") && !el.classList.contains("slide-right") && !el.classList.contains("zoom-in")) {
-      el.classList.add(variant);
-    }
+  if (!element.classList.contains("reveal-up") && !element.classList.contains("slide-left") && !element.classList.contains("slide-right") && !element.classList.contains("zoom-in")) {
+    element.classList.add(variant);
+  }
 
-    // Cycle delay classes to create a subtle stagger effect.
-    const delayClass = `delay-${(index % 4) + 1}`;
-    if (!el.classList.contains(delayClass)) {
-      el.classList.add(delayClass);
-    }
-  });
+  element.classList.add(`delay-${(index % 4) + 1}`);
 });
 
 const sections = navLinks
@@ -49,54 +40,50 @@ if (menuToggle && nav) {
   });
 }
 
-const updateActiveLink = (activeId) => {
+const setActiveLink = (activeId) => {
   navLinks.forEach((link) => {
     const targetId = link.getAttribute("href").replace("#", "");
     link.classList.toggle("is-active", targetId === activeId);
   });
 };
 
-const observer = new IntersectionObserver(
+const sectionObserver = new IntersectionObserver(
   (entries) => {
     const visible = entries
       .filter((entry) => entry.isIntersecting)
       .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
 
     if (visible[0]) {
-      updateActiveLink(visible[0].target.id);
+      setActiveLink(visible[0].target.id);
     }
   },
   {
     root: null,
-    rootMargin: "-40% 0px -45% 0px",
+    rootMargin: "-38% 0px -46% 0px",
     threshold: [0.2, 0.4, 0.6],
   }
 );
 
-sections.forEach((section) => observer.observe(section));
-
-const revealItems = Array.from(document.querySelectorAll(".reveal-up, .slide-left, .slide-right, .zoom-in"));
+sections.forEach((section) => sectionObserver.observe(section));
 
 const revealObserver = new IntersectionObserver(
-  (entries, obs) => {
+  (entries, observer) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         entry.target.classList.add("in-view");
-        obs.unobserve(entry.target);
+        observer.unobserve(entry.target);
       }
     });
   },
   {
     root: null,
-    rootMargin: "0px 0px -8% 0px",
+    rootMargin: "0px 0px -10% 0px",
     threshold: 0.15,
   }
 );
 
-revealItems.forEach((item) => revealObserver.observe(item));
+motionTargets.forEach((element) => revealObserver.observe(element));
 
-// Set default active state on initial load.
-const firstSection = sections[0];
-if (firstSection) {
-  updateActiveLink(firstSection.id);
+if (sections[0]) {
+  setActiveLink(sections[0].id);
 }
