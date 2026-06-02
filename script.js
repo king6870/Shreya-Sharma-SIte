@@ -24,24 +24,24 @@ const buildGeoClusters = () => {
   }
 
   const clusterConfigs = [
-    { centerX: 8, centerY: 10, count: 36, spreadX: 8, spreadY: 5, seed: 11 },
-    { centerX: 26, centerY: 18, count: 34, spreadX: 10, spreadY: 6, seed: 23 },
-    { centerX: 58, centerY: 12, count: 38, spreadX: 12, spreadY: 7, seed: 37 },
-    { centerX: 80, centerY: 24, count: 36, spreadX: 10, spreadY: 7, seed: 41 },
-    { centerX: 14, centerY: 56, count: 40, spreadX: 12, spreadY: 8, seed: 53 },
-    { centerX: 46, centerY: 64, count: 42, spreadX: 12, spreadY: 8, seed: 67 },
-    { centerX: 78, centerY: 74, count: 40, spreadX: 10, spreadY: 9, seed: 71 },
-    { centerX: 18, centerY: 88, count: 32, spreadX: 9, spreadY: 6, seed: 89 },
+    { centerX: 8, centerY: 10, count: 90, spreadX: 10, spreadY: 7, seed: 11 },
+    { centerX: 26, centerY: 18, count: 92, spreadX: 12, spreadY: 8, seed: 23 },
+    { centerX: 58, centerY: 12, count: 96, spreadX: 14, spreadY: 8, seed: 37 },
+    { centerX: 80, centerY: 24, count: 92, spreadX: 12, spreadY: 8, seed: 41 },
+    { centerX: 14, centerY: 56, count: 96, spreadX: 14, spreadY: 10, seed: 53 },
+    { centerX: 46, centerY: 64, count: 104, spreadX: 14, spreadY: 10, seed: 67 },
+    { centerX: 78, centerY: 74, count: 100, spreadX: 12, spreadY: 10, seed: 71 },
+    { centerX: 18, centerY: 88, count: 84, spreadX: 12, spreadY: 8, seed: 89 },
   ];
 
   const shapeTypes = ["diamond", "square", "hexagon", "triangle", "bar"];
 
-  const makeShape = (type, rand) => {
+  const makeShape = (type, rand, outline) => {
     const element = document.createElement("span");
-    element.className = `geo geo-${type}`;
+    element.className = `geo geo-${type}${outline ? " geo-outline" : ""}`;
 
-    const size = 18 + Math.round(rand() * 58);
-    const opacity = 0.55 + rand() * 0.35;
+    const size = 16 + Math.round(rand() * 62);
+    const opacity = 0.48 + rand() * 0.42;
     const rotate = Math.round(rand() * 360);
 
     element.style.opacity = opacity.toFixed(2);
@@ -53,30 +53,38 @@ const buildGeoClusters = () => {
     }
 
     if (type === "bar") {
-      element.style.width = `${size + 48}px`;
+      element.style.width = `${size + 60}px`;
       element.style.height = `${10 + Math.round(rand() * 10)}px`;
     }
 
     if (type === "triangle") {
-      const tri = 14 + Math.round(rand() * 26);
+      const tri = 12 + Math.round(rand() * 28);
       element.style.borderLeftWidth = `${tri}px`;
       element.style.borderRightWidth = `${tri}px`;
-      element.style.borderBottomWidth = `${tri + 18}px`;
+      element.style.borderBottomWidth = `${tri + 16}px`;
+    }
+
+    if (outline) {
+      element.style.background = "transparent";
+      if (type !== "triangle") {
+        element.style.boxShadow = "0 0 0 1px rgba(255,255,255,0.55), 0 10px 18px rgba(8,47,111,0.16)";
+      }
     }
 
     return element;
   };
 
-  clusterConfigs.forEach((cluster) => {
+  clusterConfigs.forEach((cluster, clusterIndex) => {
     const rand = createSeededRandom(cluster.seed);
 
     for (let index = 0; index < cluster.count; index += 1) {
       const type = shapeTypes[index % shapeTypes.length];
+      const outline = (index + clusterIndex) % 2 === 0;
       const offsetX = (rand() - 0.5) * cluster.spreadX;
       const offsetY = (rand() - 0.5) * cluster.spreadY;
       const x = Math.max(0, Math.min(100, cluster.centerX + offsetX));
       const y = Math.max(0, Math.min(100, cluster.centerY + offsetY));
-      const shape = makeShape(type, rand);
+      const shape = makeShape(type, rand, outline);
 
       shape.style.left = `${x}%`;
       shape.style.top = `${y}%`;
@@ -88,7 +96,6 @@ const buildGeoClusters = () => {
 buildGeoClusters();
 
 const revealSections = ["#education", "#leadership", "#tennis", "#achievements", "#service", "#timeline", "#contact"];
-
 const motionTargets = revealSections.flatMap((selector) => {
   const section = document.querySelector(selector);
 
@@ -101,9 +108,7 @@ const motionTargets = revealSections.flatMap((selector) => {
 
 motionTargets.forEach((element, index) => {
   const variants = ["reveal-up", "slide-left", "slide-right", "zoom-in"];
-  const variant = variants[index % variants.length];
-
-  element.classList.add(variant, `delay-${(index % 4) + 1}`);
+  element.classList.add(variants[index % variants.length], `delay-${(index % 4) + 1}`);
 });
 
 const sections = navLinks
@@ -134,9 +139,7 @@ const setActiveLink = (activeId) => {
 
 const sectionObserver = new IntersectionObserver(
   (entries) => {
-    const visible = entries
-      .filter((entry) => entry.isIntersecting)
-      .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+    const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio);
 
     if (visible[0]) {
       setActiveLink(visible[0].target.id);
