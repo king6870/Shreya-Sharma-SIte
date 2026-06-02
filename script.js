@@ -1,6 +1,31 @@
 const nav = document.getElementById("mainNav");
 const menuToggle = document.getElementById("menuToggle");
 const navLinks = Array.from(document.querySelectorAll(".site-nav a"));
+
+document.body.classList.add("js-enabled");
+
+const autoRevealSelectors = [
+  ".section h2",
+  ".card",
+  ".badge-list span",
+  ".timeline li",
+  ".impact-card",
+];
+
+autoRevealSelectors.forEach((selector) => {
+  document.querySelectorAll(selector).forEach((el, index) => {
+    if (!el.classList.contains("reveal-up")) {
+      el.classList.add("reveal-up");
+    }
+
+    // Cycle delay classes to create a subtle stagger effect.
+    const delayClass = `delay-${(index % 4) + 1}`;
+    if (!el.classList.contains(delayClass)) {
+      el.classList.add(delayClass);
+    }
+  });
+});
+
 const sections = navLinks
   .map((link) => document.querySelector(link.getAttribute("href")))
   .filter(Boolean);
@@ -45,6 +70,26 @@ const observer = new IntersectionObserver(
 );
 
 sections.forEach((section) => observer.observe(section));
+
+const revealItems = Array.from(document.querySelectorAll(".reveal-up"));
+
+const revealObserver = new IntersectionObserver(
+  (entries, obs) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("in-view");
+        obs.unobserve(entry.target);
+      }
+    });
+  },
+  {
+    root: null,
+    rootMargin: "0px 0px -8% 0px",
+    threshold: 0.15,
+  }
+);
+
+revealItems.forEach((item) => revealObserver.observe(item));
 
 // Set default active state on initial load.
 const firstSection = sections[0];
