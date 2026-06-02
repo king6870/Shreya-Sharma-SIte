@@ -10,12 +10,16 @@ const autoRevealSelectors = [
   ".badge-list span",
   ".timeline li",
   ".impact-card",
+  ".subhead",
+  ".section p",
 ];
 
 autoRevealSelectors.forEach((selector) => {
   document.querySelectorAll(selector).forEach((el, index) => {
-    if (!el.classList.contains("reveal-up")) {
-      el.classList.add("reveal-up");
+    const variant = ["slide-left", "slide-right", "zoom-in", "reveal-up"][index % 4];
+
+    if (!el.classList.contains("reveal-up") && !el.classList.contains("slide-left") && !el.classList.contains("slide-right") && !el.classList.contains("zoom-in")) {
+      el.classList.add(variant);
     }
 
     // Cycle delay classes to create a subtle stagger effect.
@@ -71,7 +75,7 @@ const observer = new IntersectionObserver(
 
 sections.forEach((section) => observer.observe(section));
 
-const revealItems = Array.from(document.querySelectorAll(".reveal-up"));
+const revealItems = Array.from(document.querySelectorAll(".reveal-up, .slide-left, .slide-right, .zoom-in"));
 
 const revealObserver = new IntersectionObserver(
   (entries, obs) => {

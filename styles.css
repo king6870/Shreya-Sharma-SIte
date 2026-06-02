@@ -59,9 +59,8 @@ body {
 }
 
 .site-header {
-  position: sticky;
-  top: 0;
-  z-index: 40;
+  position: relative;
+  z-index: 20;
   background: color-mix(in srgb, #ffffff 82%, var(--sapphire-100) 18%);
   backdrop-filter: blur(6px);
   border-bottom: 1px solid #b8d0f5;
@@ -117,11 +116,11 @@ body {
 
 .section {
   padding: clamp(3rem, 6vw, 5rem) 0;
-  scroll-margin-top: 88px;
+  scroll-margin-top: 20px;
 }
 
 .section-alt {
-  background: linear-gradient(180deg, #eef5ff 0%, #e5f0ff 100%);
+  background: linear-gradient(125deg, #eaf3ff 0%, #f5f9d8 100%);
   border-top: 1px solid #cfe1ff;
   border-bottom: 1px solid #cfe1ff;
 }
@@ -140,6 +139,7 @@ body {
   z-index: -1;
   background:
     radial-gradient(circle at 15% 20%, color-mix(in srgb, var(--sapphire-500) 32%, transparent 68%), transparent 42%),
+    radial-gradient(circle at 84% 78%, color-mix(in srgb, var(--yellow-200) 58%, transparent 42%), transparent 40%),
     linear-gradient(132deg, var(--sapphire-950) 0%, var(--sapphire-900) 42%, var(--sapphire-500) 100%);
 }
 
@@ -220,7 +220,7 @@ h2 {
 }
 
 .impact-strip {
-  background: linear-gradient(180deg, #0c469d 0%, #0f52ba 100%);
+  background: linear-gradient(135deg, #0c469d 0%, #0f52ba 72%, #f2dc6b 100%);
   border-top: 1px solid #2b67cc;
   border-bottom: 1px solid #2b67cc;
 }
@@ -283,7 +283,7 @@ h2 {
 }
 
 .feature-section {
-  background: linear-gradient(135deg, #dfedff 0%, #f7fbff 34%, #cfe3ff 100%);
+  background: linear-gradient(130deg, #ddebff 0%, #eef6ff 52%, #f6efb8 100%);
 }
 
 .badge-list {
@@ -305,7 +305,12 @@ h2 {
 
 .timeline-section {
   background:
-    linear-gradient(180deg, #e7f2ff 0%, #edf5ff 55%, #dcecff 100%);
+    linear-gradient(145deg, #e7f2ff 0%, #eef6de 100%);
+}
+
+main {
+  position: relative;
+  overflow: hidden;
 }
 
 .timeline {
@@ -351,17 +356,23 @@ h2 {
 }
 
 .geo-layer {
-  position: fixed;
+  position: absolute;
   inset: 0;
   pointer-events: none;
-  z-index: -1;
+  z-index: 0;
   overflow: hidden;
+}
+
+main > section,
+main > .impact-strip {
+  position: relative;
+  z-index: 1;
 }
 
 .geo {
   --base-rot: 0deg;
   position: absolute;
-  opacity: 0.4;
+  opacity: 0.55;
   border: 3px solid color-mix(in srgb, var(--sapphire-500) 78%, #ffffff 22%);
   box-shadow: 0 12px 24px rgba(8, 47, 111, 0.24);
   animation: none;
@@ -371,8 +382,8 @@ h2 {
   --base-rot: 45deg;
   width: 84px;
   height: 84px;
-  top: 24%;
-  left: 5%;
+  top: 13%;
+  left: 4%;
   background: color-mix(in srgb, var(--yellow-200) 70%, transparent 30%);
   transform: rotate(var(--base-rot));
 }
@@ -380,8 +391,8 @@ h2 {
 .geo-circle {
   width: 130px;
   height: 130px;
-  top: 56%;
-  right: 4%;
+  top: 48%;
+  right: 3%;
   border-radius: 50%;
   background: color-mix(in srgb, var(--sapphire-100) 45%, transparent 55%);
 }
@@ -390,8 +401,8 @@ h2 {
   border: 0;
   width: 0;
   height: 0;
-  top: 70%;
-  left: 10%;
+  top: 66%;
+  left: 8%;
   border-left: 38px solid transparent;
   border-right: 38px solid transparent;
   border-bottom: 66px solid color-mix(in srgb, var(--sapphire-700) 70%, transparent 30%);
@@ -403,9 +414,46 @@ h2 {
 .geo-square {
   width: 68px;
   height: 68px;
-  top: 12%;
-  right: 18%;
+  top: 17%;
+  right: 21%;
   background: color-mix(in srgb, var(--yellow-100) 72%, transparent 28%);
+}
+
+.geo-ring {
+  width: 150px;
+  height: 150px;
+  top: 84%;
+  right: 7%;
+  border-radius: 50%;
+  border-width: 8px;
+  background: transparent;
+}
+
+.geo-hexagon {
+  width: 94px;
+  height: 56px;
+  top: 32%;
+  left: 78%;
+  background: color-mix(in srgb, var(--yellow-300) 65%, transparent 35%);
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+}
+
+.geo-bar {
+  width: 210px;
+  height: 16px;
+  top: 78%;
+  left: 64%;
+  background: color-mix(in srgb, var(--sapphire-700) 78%, #ffffff 22%);
+  border-radius: 999px;
+}
+
+.geo-dot {
+  width: 34px;
+  height: 34px;
+  top: 38%;
+  left: 14%;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--yellow-200) 86%, transparent 14%);
 }
 
 @keyframes text-slide-in {
@@ -423,14 +471,42 @@ h2 {
   transition: transform 560ms ease, opacity 560ms ease;
 }
 
+.slide-left,
+.slide-right,
+.zoom-in {
+  transition: transform 620ms ease, opacity 620ms ease;
+}
+
 .js-enabled .reveal-up {
   opacity: 0;
   transform: translateY(18px);
 }
 
+.js-enabled .slide-left {
+  opacity: 0;
+  transform: translateX(-22px);
+}
+
+.js-enabled .slide-right {
+  opacity: 0;
+  transform: translateX(22px);
+}
+
+.js-enabled .zoom-in {
+  opacity: 0;
+  transform: scale(0.96);
+}
+
 .js-enabled .reveal-up.in-view {
   opacity: 1;
   transform: translateY(0);
+}
+
+.js-enabled .slide-left.in-view,
+.js-enabled .slide-right.in-view,
+.js-enabled .zoom-in.in-view {
+  opacity: 1;
+  transform: none;
 }
 
 .delay-1 {
@@ -539,13 +615,24 @@ button:focus-visible {
   }
 
   .geo {
-    opacity: 0.3;
+    opacity: 0.45;
+  }
+
+  .geo-ring,
+  .geo-bar {
+    display: none;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .reveal-up,
+  .slide-left,
+  .slide-right,
+  .zoom-in,
   .js-enabled .reveal-up,
+  .js-enabled .slide-left,
+  .js-enabled .slide-right,
+  .js-enabled .zoom-in,
   .js-enabled .reveal-up.in-view {
     opacity: 1;
     transform: none;
