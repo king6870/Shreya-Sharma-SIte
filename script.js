@@ -36,7 +36,8 @@ const buildGeoField = (layer, configs, options = {}) => {
     const rotate = Math.round(rand() * 360);
 
     element.style.opacity = opacity.toFixed(2);
-    element.style.transform = `rotate(${rotate}deg)`;
+    element.style.transformOrigin = "center center";
+    element.style.transform = `translate(-50%, -50%) rotate(${rotate}deg)`;
 
     if (type === "diamond" || type === "square" || type === "hexagon") {
       element.style.width = `${size}px`;
@@ -79,7 +80,7 @@ const buildGeoField = (layer, configs, options = {}) => {
       shape.style.top = `${Math.max(0, Math.min(100, y))}%`;
 
       if (type === "bar") {
-        shape.style.transform = `rotate(${Math.round(rand() * 180)}deg)`;
+        shape.style.transform = `translate(-50%, -50%) rotate(${Math.round(rand() * 180)}deg)`;
       }
 
       layer.appendChild(shape);
@@ -88,22 +89,22 @@ const buildGeoField = (layer, configs, options = {}) => {
 };
 
 buildGeoField(geoLayer, [
-  { xMin: 0, xMax: 12, yMin: 0, yMax: 100, count: 56, seed: 11 },
-  { xMin: 88, xMax: 100, yMin: 0, yMax: 100, count: 56, seed: 23 },
-  { xMin: 0, xMax: 100, yMin: 18, yMax: 28, count: 18, seed: 37 },
-  { xMin: 0, xMax: 100, yMin: 72, yMax: 84, count: 18, seed: 41 },
+  { xMin: 4, xMax: 16, yMin: 4, yMax: 96, count: 48, seed: 11 },
+  { xMin: 84, xMax: 96, yMin: 4, yMax: 96, count: 48, seed: 23 },
+  { xMin: 10, xMax: 90, yMin: 16, yMax: 28, count: 14, seed: 37 },
+  { xMin: 10, xMax: 90, yMin: 72, yMax: 84, count: 14, seed: 41 },
 ], { tone: "blue", shapeTypes: ["diamond", "square", "hexagon", "bar"], baseOpacity: 0.5, opacitySpread: 0.24 });
 
 buildGeoField(document.querySelector(".geo-layer-hero"), [
-  { xMin: 0, xMax: 15, yMin: 4, yMax: 96, count: 22, seed: 53 },
-  { xMin: 85, xMax: 100, yMin: 4, yMax: 96, count: 22, seed: 67 },
-  { xMin: 8, xMax: 92, yMin: 2, yMax: 18, count: 12, seed: 71 },
+  { xMin: 5, xMax: 18, yMin: 10, yMax: 90, count: 18, seed: 53 },
+  { xMin: 82, xMax: 95, yMin: 10, yMax: 90, count: 18, seed: 67 },
+  { xMin: 14, xMax: 86, yMin: 10, yMax: 24, count: 10, seed: 71 },
 ], { tone: "yellow", shapeTypes: ["diamond", "square", "hexagon", "bar"], baseOpacity: 0.46, opacitySpread: 0.2 });
 
 buildGeoField(document.querySelector(".geo-layer-impact"), [
-  { xMin: 0, xMax: 14, yMin: 6, yMax: 94, count: 18, seed: 89 },
-  { xMin: 86, xMax: 100, yMin: 6, yMax: 94, count: 18, seed: 97 },
-  { xMin: 10, xMax: 90, yMin: 8, yMax: 22, count: 10, seed: 101 },
+  { xMin: 6, xMax: 18, yMin: 10, yMax: 90, count: 14, seed: 89 },
+  { xMin: 82, xMax: 94, yMin: 10, yMax: 90, count: 14, seed: 97 },
+  { xMin: 14, xMax: 86, yMin: 12, yMax: 24, count: 8, seed: 101 },
 ], { tone: "yellow", shapeTypes: ["diamond", "square", "hexagon", "bar"], baseOpacity: 0.44, opacitySpread: 0.18 });
 
 const revealSections = ["#education", "#leadership", "#tennis", "#achievements", "#service", "#timeline", "#contact"];
