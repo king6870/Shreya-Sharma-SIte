@@ -169,32 +169,6 @@ h2 {
   margin-top: -0.1rem;
 }
 
-.hero-actions {
-  margin-top: 1.4rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.8rem;
-}
-
-.btn {
-  display: inline-block;
-  text-decoration: none;
-  border-radius: 999px;
-  padding: 0.58rem 1.05rem;
-  border: 1px solid transparent;
-}
-
-.btn-primary {
-  background: var(--sapphire-900);
-  color: #fff;
-}
-
-.btn-secondary {
-  background: #fff;
-  border-color: #b9cef0;
-  color: var(--sapphire-950);
-}
-
 .stats {
   display: grid;
   grid-template-columns: repeat(2, minmax(120px, 1fr));
