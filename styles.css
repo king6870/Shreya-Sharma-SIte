@@ -32,10 +32,10 @@ body {
   color: var(--ink-900);
   line-height: 1.6;
   background:
-    radial-gradient(circle at 82% 10%, color-mix(in srgb, var(--yellow-200) 64%, #ffffff 36%), transparent 24%),
-    radial-gradient(circle at 18% 8%, color-mix(in srgb, var(--azure-100) 55%, #ffffff 45%), transparent 22%),
-    radial-gradient(circle at 86% 70%, color-mix(in srgb, var(--yellow-100) 58%, #ffffff 42%), transparent 26%),
-    linear-gradient(180deg, #eff6ff 0%, #f8fbff 100%);
+    radial-gradient(circle at 82% 10%, color-mix(in srgb, var(--yellow-200) 56%, #ffffff 44%), transparent 24%),
+    radial-gradient(circle at 18% 8%, color-mix(in srgb, var(--azure-100) 68%, #ffffff 32%), transparent 22%),
+    radial-gradient(circle at 86% 70%, color-mix(in srgb, var(--yellow-100) 60%, #ffffff 40%), transparent 26%),
+    linear-gradient(180deg, #f4f8ff 0%, #fbfdff 100%);
 }
 
 .skip-link {
@@ -61,7 +61,7 @@ body {
 .site-header {
   position: relative;
   z-index: 20;
-  background: linear-gradient(90deg, #ffffff 0%, color-mix(in srgb, var(--azure-100) 78%, #ffffff 22%) 100%);
+  background: linear-gradient(90deg, #ffffff 0%, color-mix(in srgb, var(--azure-100) 68%, #ffffff 32%) 100%);
   border-bottom: 1px solid #b8d0f5;
   backdrop-filter: blur(6px);
 }
@@ -99,7 +99,7 @@ body {
 
 .site-nav a:hover,
 .site-nav a.is-active {
-  background: linear-gradient(135deg, color-mix(in srgb, var(--azure-100) 75%, #ffffff 25%), color-mix(in srgb, var(--yellow-100) 75%, #ffffff 25%));
+  background: linear-gradient(135deg, color-mix(in srgb, var(--azure-100) 70%, #ffffff 30%), color-mix(in srgb, var(--yellow-100) 68%, #ffffff 32%));
   border-color: #9fbff0;
   color: var(--azure-900);
 }
@@ -108,7 +108,7 @@ body {
   display: none;
   border: 1px solid #a8c3ee;
   border-radius: 10px;
-  background: linear-gradient(135deg, #ffffff 0%, color-mix(in srgb, var(--azure-100) 70%, #ffffff 30%) 100%);
+  background: linear-gradient(135deg, #ffffff 0%, color-mix(in srgb, var(--azure-100) 62%, #ffffff 38%) 100%);
   color: var(--azure-950);
   padding: 0.35rem 0.7rem;
   font: inherit;
@@ -122,7 +122,7 @@ body {
 }
 
 .section-alt {
-  background: linear-gradient(135deg, #ebf4ff 0%, #f8f3cd 100%);
+  background: linear-gradient(135deg, #edf5ff 0%, #fbf5d8 100%);
   border-top: 1px solid #cfe1ff;
   border-bottom: 1px solid #cfe1ff;
 }
@@ -132,7 +132,7 @@ body {
   overflow: hidden;
   isolation: isolate;
   padding-top: clamp(4rem, 8vw, 6.5rem);
-  background: linear-gradient(135deg, #0a4599 0%, #0f52ba 60%, #e8dc91 100%);
+  background: linear-gradient(135deg, #2f7fe8 0%, #59aaff 60%, #f7e68f 100%);
 }
 
 .hero::before {
@@ -141,9 +141,9 @@ body {
   inset: 0;
   z-index: -1;
   background:
-    radial-gradient(circle at 14% 24%, color-mix(in srgb, var(--azure-500) 30%, transparent 70%), transparent 35%),
-    radial-gradient(circle at 84% 18%, color-mix(in srgb, var(--yellow-200) 52%, transparent 48%), transparent 30%),
-    linear-gradient(120deg, rgba(8, 47, 111, 0.2) 0%, rgba(15, 82, 186, 0.15) 55%, rgba(242, 220, 107, 0.18) 100%);
+    radial-gradient(circle at 14% 24%, color-mix(in srgb, var(--azure-500) 26%, transparent 74%), transparent 35%),
+    radial-gradient(circle at 84% 18%, color-mix(in srgb, var(--yellow-200) 48%, transparent 52%), transparent 30%),
+    linear-gradient(120deg, rgba(47, 127, 232, 0.22) 0%, rgba(89, 170, 255, 0.16) 55%, rgba(242, 220, 107, 0.16) 100%);
 }
 
 .hero-grid {
@@ -202,28 +202,13 @@ h2 {
 }
 
 .hero .eyebrow {
-  animation: text-slide-in 580ms ease both;
-}
-
-.hero h1 {
-  animation: text-slide-in 700ms ease both 110ms;
-}
-
-.hero .lede {
-  animation: text-slide-in 760ms ease both 200ms;
-}
-
-.hero .hero-note {
-  animation: text-slide-in 760ms ease both 300ms;
-}
-
 .subhead {
   color: var(--ink-700);
   margin-top: -0.1rem;
 }
 
 .impact-strip {
-  background: linear-gradient(135deg, #0a4599 0%, #0f52ba 72%, #f2dc6b 100%);
+  background: linear-gradient(135deg, #2f7fe8 0%, #59aaff 70%, #f2dc6b 100%);
   border-top: 1px solid #2b67cc;
   border-bottom: 1px solid #2b67cc;
 }
@@ -240,7 +225,7 @@ h2 {
 }
 
 .impact-card {
-  background: linear-gradient(135deg, color-mix(in srgb, #ffffff 84%, var(--azure-100) 16%), color-mix(in srgb, #ffffff 88%, var(--yellow-100) 12%));
+  background: linear-gradient(135deg, color-mix(in srgb, #ffffff 90%, var(--azure-100) 10%), color-mix(in srgb, #ffffff 92%, var(--yellow-100) 8%);
   border: 1px solid #7ea5e8;
   box-shadow: inset 0 3px 0 var(--yellow-300), var(--shadow);
   border-radius: var(--radius);
@@ -273,7 +258,7 @@ h2 {
 }
 
 .card {
-  background: linear-gradient(135deg, #ffffff 0%, color-mix(in srgb, var(--azure-100) 24%, #ffffff 76%) 100%);
+  background: linear-gradient(135deg, #ffffff 0%, color-mix(in srgb, var(--azure-100) 18%, #ffffff 82%) 100%);
   border: 1px solid #c2d8fb;
   box-shadow: inset 0 3px 0 color-mix(in srgb, var(--azure-100) 76%, #ffffff 24%), var(--shadow);
   border-radius: var(--radius);
@@ -286,7 +271,7 @@ h2 {
 }
 
 .feature-section {
-  background: linear-gradient(130deg, #dfebff 0%, #f8fbff 55%, #f6efb8 100%);
+  background: linear-gradient(130deg, #e7f2ff 0%, #fbfdff 55%, #f8efc3 100%);
 }
 
 .badge-list {
@@ -298,7 +283,7 @@ h2 {
 .badge-list span {
   display: inline-flex;
   align-items: center;
-  background: linear-gradient(135deg, #ffffff 0%, color-mix(in srgb, var(--azure-100) 38%, #ffffff 62%) 100%);
+  background: linear-gradient(135deg, #ffffff 0%, color-mix(in srgb, var(--azure-100) 30%, #ffffff 70%) 100%);
   border: 1px solid #9fbff0;
   color: var(--ink-900);
   border-radius: 999px;
@@ -307,7 +292,7 @@ h2 {
 }
 
 .timeline-section {
-  background: linear-gradient(145deg, #e7f2ff 0%, #eef6de 100%);
+  background: linear-gradient(145deg, #ecf5ff 0%, #fbf6df 100%);
 }
 
 .timeline {
@@ -347,7 +332,7 @@ h2 {
 }
 
 .timeline-content {
-  background: linear-gradient(135deg, #ffffff 0%, color-mix(in srgb, var(--yellow-100) 22%, #ffffff 78%) 100%);
+  background: linear-gradient(135deg, #ffffff 0%, color-mix(in srgb, var(--yellow-100) 16%, #ffffff 84%) 100%);
   border: 1px solid #c2d8fb;
   border-radius: 12px;
   padding: 0.7rem 0.8rem;
@@ -374,10 +359,10 @@ main > .impact-strip {
 
 .geo {
   position: absolute;
-  opacity: 0.66;
+  opacity: 0.82;
   border: 3px solid color-mix(in srgb, var(--azure-500) 80%, #ffffff 20%);
   box-shadow: 0 12px 24px rgba(8, 47, 111, 0.22);
-  background: linear-gradient(135deg, color-mix(in srgb, var(--azure-100) 62%, #ffffff 38%), color-mix(in srgb, var(--yellow-100) 60%, #ffffff 40%));
+  background: linear-gradient(135deg, color-mix(in srgb, var(--azure-100) 72%, #ffffff 28%), color-mix(in srgb, var(--yellow-100) 68%, #ffffff 32%);
 }
 
 .geo-diamond {
