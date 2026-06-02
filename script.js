@@ -18,20 +18,20 @@ const createSeededRandom = (seed) => {
   };
 };
 
-const buildGeoClusters = () => {
+const buildGeoField = () => {
   if (!geoLayer) {
     return;
   }
 
-  const clusterConfigs = [
-    { centerX: 8, centerY: 10, count: 90, spreadX: 10, spreadY: 7, seed: 11 },
-    { centerX: 26, centerY: 18, count: 92, spreadX: 12, spreadY: 8, seed: 23 },
-    { centerX: 58, centerY: 12, count: 96, spreadX: 14, spreadY: 8, seed: 37 },
-    { centerX: 80, centerY: 24, count: 92, spreadX: 12, spreadY: 8, seed: 41 },
-    { centerX: 14, centerY: 56, count: 96, spreadX: 14, spreadY: 10, seed: 53 },
-    { centerX: 46, centerY: 64, count: 104, spreadX: 14, spreadY: 10, seed: 67 },
-    { centerX: 78, centerY: 74, count: 100, spreadX: 12, spreadY: 10, seed: 71 },
-    { centerX: 18, centerY: 88, count: 84, spreadX: 12, spreadY: 8, seed: 89 },
+  const bandConfigs = [
+    { xMin: 0, xMax: 14, yMin: 0, yMax: 100, count: 80, seed: 11 },
+    { xMin: 86, xMax: 100, yMin: 0, yMax: 100, count: 80, seed: 23 },
+    { xMin: 14, xMax: 86, yMin: 0, yMax: 14, count: 52, seed: 37 },
+    { xMin: 14, xMax: 86, yMin: 86, yMax: 100, count: 52, seed: 41 },
+    { xMin: 0, xMax: 18, yMin: 18, yMax: 84, count: 52, seed: 53 },
+    { xMin: 82, xMax: 100, yMin: 18, yMax: 84, count: 52, seed: 67 },
+    { xMin: 0, xMax: 100, yMin: 0, yMax: 100, count: 36, seed: 71 },
+    { xMin: 0, xMax: 100, yMin: 0, yMax: 100, count: 36, seed: 89 },
   ];
 
   const shapeTypes = ["diamond", "square", "hexagon", "triangle", "bar"];
@@ -74,26 +74,32 @@ const buildGeoClusters = () => {
     return element;
   };
 
-  clusterConfigs.forEach((cluster, clusterIndex) => {
-    const rand = createSeededRandom(cluster.seed);
+  bandConfigs.forEach((band, bandIndex) => {
+    const rand = createSeededRandom(band.seed);
 
-    for (let index = 0; index < cluster.count; index += 1) {
+    for (let index = 0; index < band.count; index += 1) {
       const type = shapeTypes[index % shapeTypes.length];
-      const outline = (index + clusterIndex) % 2 === 0;
-      const offsetX = (rand() - 0.5) * cluster.spreadX;
-      const offsetY = (rand() - 0.5) * cluster.spreadY;
-      const x = Math.max(0, Math.min(100, cluster.centerX + offsetX));
-      const y = Math.max(0, Math.min(100, cluster.centerY + offsetY));
+      const outline = (index + bandIndex) % 2 === 0;
+      const x = band.xMin + rand() * (band.xMax - band.xMin);
+      const y = band.yMin + rand() * (band.yMax - band.yMin);
       const shape = makeShape(type, rand, outline);
 
-      shape.style.left = `${x}%`;
-      shape.style.top = `${y}%`;
+      const baseX = Math.max(0, Math.min(100, x));
+      const baseY = Math.max(0, Math.min(100, y));
+
+      shape.style.left = `${baseX}%`;
+      shape.style.top = `${baseY}%`;
+
+      if (type === "bar") {
+        shape.style.transform = `rotate(${Math.round(rand() * 180)}deg)`;
+      }
+
       geoLayer.appendChild(shape);
     }
   });
 };
 
-buildGeoClusters();
+buildGeoField();
 
 const revealSections = ["#education", "#leadership", "#tennis", "#achievements", "#service", "#timeline", "#contact"];
 const motionTargets = revealSections.flatMap((selector) => {
